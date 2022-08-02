@@ -20,5 +20,16 @@
 }
 
 .primaryGradient > button {
+
     @apply border-0 text-white;
+}
+
+.primaryGradient > button:focus {
+    background: -webkit-linear-gradient(0deg,#4200FF, #73CDFF);
+    @apply border-0 text-white;
+}
+
+.primaryGradient > button:hover {
+    @apply border-0 text-white;
+    background: -webkit-linear-gradient(0deg,#4200FF, #73CDFF);
 }
