@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @import 'antd/dist/antd.css'; 
+
+.ant-page-header-heading {
+  @apply container mx-auto px-8
+}
