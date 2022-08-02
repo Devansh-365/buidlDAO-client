@@ -9,11 +9,11 @@ const HeroSection = () => {
                 <h1 className='text-6xl font-bold'><span className='text-blue-500'>Buidl</span> and launch <br/>in decentralised world</h1>
                 <p className='mt-3  opacity-40 text-lg'>Platform which helps buidlers to launch their projects in crypto space. Creators gets rewarded for their creations.</p>
                 <div className='mt-8'>
-                    <BDButton buttonType={ButtonType.PrimaryGradient}><>Coming Soon</></BDButton>
+                    <BDButton buttonType={ButtonType.PrimaryGradient}><span>Coming Soon</span></BDButton>
                 </div>
             </div>
             <div className='flex justify-end'>
-                <img src={BuidlDAOHeroImg} />
+                <img src={BuidlDAOHeroImg.src} />
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 import { Button, PageHeader } from 'antd';
 import React from 'react';
-import BuidlDAO_Logo from '../../../assets/BuidlDAO_Logo.svg';
+import BuidlDAO_Logo from '../../../assets/BuidlDAO_Logo.png';
 import BDButton, {ButtonType} from '../../atoms/BDButton/BDButton';
 const Navbar: React.FC  = () => {
     return (
@@ -14,7 +14,7 @@ const Navbar: React.FC  = () => {
            <BDButton buttonType={ButtonType.SecondaryGradient}><>Coming soon</></BDButton>
         </div>
     </div>)}
-        title={(<div className='relative'><img src={BuidlDAO_Logo}  /></div>)}
+        title={(<div className='relative'><img src={BuidlDAO_Logo.src}  /></div>)}
         subTitle={(
             <div className='flex justify-between items-center'>
                 <div className='text-black font-semibold'>

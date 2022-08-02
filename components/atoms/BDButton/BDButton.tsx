@@ -10,7 +10,7 @@ export enum ButtonType {
 export interface IBDButton {
   buttonType: ButtonType
 }
-const BDButton:React.FC<IBDButton> = (props: PropsWithChildren<IBDButton>) => {
+const BDButton:React.FC<PropsWithChildren<IBDButton>> = (props: PropsWithChildren<IBDButton>) => {
 
 
 

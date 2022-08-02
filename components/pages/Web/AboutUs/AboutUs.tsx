@@ -8,7 +8,7 @@ const AboutUs = () => {
     <div className='grid grid-cols-2 '>
        
         <div className='flex justify-start'>
-            <img src={BuidlDAOHeroImg} />
+            <img src={BuidlDAOHeroImg.src} />
         </div>
         <div className='flex justify-center flex-col'>
             <h1 className='text-4xl font-bold'>Introducing <span className='text-blue-500'>Buidl Token</span>, which powers BuidlDAO</h1>
