@@ -1,0 +1,24 @@
+.secondaryGradient {
+    @apply rounded-lg;
+    padding: 1px;
+    background: -webkit-linear-gradient(0deg,#4200FF, #73CDFF);
+
+}
+.secondaryGradient > div {
+    @apply rounded-lg;
+}
+
+.secondaryGradient > button {
+    background: -webkit-linear-gradient(#4200FF, #73CDFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.primaryGradient {
+    @apply rounded-lg text-white p-3 inline;
+    background: -webkit-linear-gradient(0deg,#4200FF, #73CDFF);
+}
+
+.primaryGradient > button {
+    @apply border-0 text-white;
+}
