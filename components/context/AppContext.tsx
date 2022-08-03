@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, PropsWithChildren, useState } from "react";
 
 import {ethers} from 'ethers';
 import BuidlDAO from '../../abi/BuidlDAO.json'
@@ -6,14 +6,25 @@ declare global {
     interface Window { ethereum: any }
   }
 
-interface IAppContext {
+export interface IAppContext {
+  connectedUser: string,
+  setConnectedUser: (a: string) => void,
+  connectWallet: () => Promise<string>,
+  getNetworkId: () => any,
+  upload: (title: string, data: string) => Promise<void>,
+  upvote: (id: number) => Promise<void>,
+  getProjects: () => Promise<any>,
+  getProject: (id: number) => Promise<any>,
+  getProjectUpvotes: (id: number) => Promise<any>,
+  loading: boolean
 
 }
 
+
 export const AppContext = createContext<IAppContext | null>(null);
 
-const AppProvier = ({children}) => {
-  const [connected, setConnecteUser] = useState("");
+const AppProvider = ({children} : PropsWithChildren) => {
+  const [connectedUser, setConnectedUser] = useState("");
   const [loading, setLoading] = useState(false);
   const contractAddress = "0x1d9Cf9104244B3Bf8864d10205A878263C9DC890";
 
@@ -27,6 +38,7 @@ const AppProvier = ({children}) => {
         const accounts = await ethereum.request({method: "eth_accounts"});
         if(accounts.length!== 0) {
           const account = accounts[0];
+          setConnectedUser(account)
           return account;
         }else {
           throw new Error("No wallet is connected");
@@ -66,7 +78,7 @@ const AppProvier = ({children}) => {
       const signer = provider.getSigner();
          
       const connectedContract = new ethers.Contract(contractAddress, BuidlDAO.abi, signer);
-      return (await connectedContract.upload(title, data));
+      await connectedContract.upload(title, data);
        
     }catch(err) {
 
@@ -87,7 +99,7 @@ const AppProvier = ({children}) => {
       const signer = provider.getSigner();
          
       const connectedContract = new ethers.Contract(contractAddress, BuidlDAO.abi, signer);
-      return (await connectedContract.upvote(id));
+      await connectedContract.upvote(id);
        
     }catch(err) {
 
@@ -155,4 +167,22 @@ const AppProvier = ({children}) => {
     }finally {
       setLoading(false);
     }
+  }
+  return (<AppContext.Provider
+    value={{
+      connectedUser,
+      setConnectedUser,
+      loading,
+      connectWallet,
+      getProjectUpvotes,
+      getProject,
+      upload,
+      upvote,
+      getNetworkId,
+      getProjects
+    }}>
+      <>{children}</>
+      </AppContext.Provider>)
 }
+
+export default AppProvider
