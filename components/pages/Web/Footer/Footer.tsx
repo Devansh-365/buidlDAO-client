@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import Logo from '../../../../assets/Logo.png'
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
             <img src={Logo.src}/>
             <div >
             <span className='mr-6'>Whitepaper</span>
-            <span>Discord</span>
+            <span><span className='ml-6'><Link href="https://t.me/+_drxvcsKyypkMmQ1">Telegram</Link></span></span>
             </div>
         </div>
        

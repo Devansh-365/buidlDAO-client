@@ -4,7 +4,7 @@ import BuidlDAOHeroImg from '../../../../assets/BuidlDAO_Hero_Img.png'
 import styles from './index.module.css'
 const HeroSection = () => {
   return (
-    <div className={`container mx-auto px-8 h-screen flex items-center ${styles.heroSection}`}>
+    <div className={`container mx-auto px-8 h-screen flex items-center mt-80 lg:mt-0`}>
         <div className='grid lg:grid-cols-2 grid-cols-1'>
             <div className='flex justify-center flex-col'>
                 <h1 className='text-6xl font-bold'><span className='text-blue-500'>Buidl</span> and launch <br/>in decentralised world</h1>
