@@ -1,3 +1,4 @@
 .aboutUs {
     height: 80vh;
+    @apply my-40;
 }

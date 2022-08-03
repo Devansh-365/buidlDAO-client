@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+import { Button , ButtonProps} from 'antd'
 import React, { PropsWithChildren } from 'react'
 import styles from './index.module.css';
 export enum ButtonType {
@@ -7,30 +7,30 @@ export enum ButtonType {
 
 }
 
-export interface IBDButton {
+export type IBDButton = {
   buttonType: ButtonType
-}
-const BDButton:React.FC<PropsWithChildren<IBDButton>> = (props: PropsWithChildren<IBDButton>) => {
+} &  ButtonProps
+const BDButton:React.FC<PropsWithChildren<IBDButton>> = ({buttonType, children,...rest}: PropsWithChildren<IBDButton>) => {
 
+  
 
-
-  switch(props.buttonType) {
+  switch(buttonType) {
     case ButtonType.SecondaryGradient:
       return  ( 
         <div className={styles.secondaryGradient}>
           <div className='bg-white'>
-            <Button type='link'>{props.children}</Button>
+            <Button {...rest} type='link'>{children}</Button>
           </div>
         </div>
       )
       case ButtonType.PrimaryGradient:
         return (
           <div className={styles.primaryGradient}>
-            <Button>{props.children}</Button>
+            <Button {...rest}>{children}</Button>
           </div>
         )
     default:
-      return (<Button>{props.children}</Button>)
+      return (<Button {...rest}>{children}</Button>)
   }
 }
 

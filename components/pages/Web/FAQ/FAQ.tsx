@@ -3,7 +3,7 @@ import React from 'react'
 const FAQ = () => {
   return (
     <div className='container mx-auto px-8 py-20 flex items-center'>
-    <div className='grid grid-cols-2 '>
+    <div className='grid grid-cols-1 lg:grid-cols-2 '>
         <div className='flex justify-center flex-col'>
             <h1 className='text-2xl font-bold'><span className='text-blue-500'>Frequently</span> asked questions</h1>
             <p className='mt-3  opacity-40 text-lg'>Can’t find the answer you’re looking for? DM us!</p>
