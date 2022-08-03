@@ -10,7 +10,7 @@ const AboutUs = () => {
         <div className='flex justify-start'>
             <img src={BuidlDAOHeroImg.src} />
         </div>
-        <div className='mt-10 lg:mt-0 flex justify-center flex-col w-9/12	'>
+        <div className='mt-10 lg:mt-0 flex justify-center flex-col lg:w-9/12	'>
             <h1 className='text-4xl font-bold'>Introducing <span className='text-blue-500'>Buidl Token</span>, which powers BuidlDAO</h1>
             <p className='mt-3  opacity-40 text-lg'>Buidl Token is ERC-20 token on Polygon, used buy BuidlDAO to operate over chain.</p>
           
