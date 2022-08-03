@@ -28,7 +28,7 @@ const Navbar: React.FC  = () => {
                     
                     <div className='text-black font-semibold '>
                         <p className='mb-6 '>About Us</p>
-                        <p className='mb-6'>Whitepaper</p>
+                        <p className='mb-6'><Link href="https://nonstop-heart-099.notion.site/BuidlDAO-af37e2689cd347cb9be4c2343d156493">Whitepaper</Link></p>
                         <p className='mb-6' ><Link href="https://t.me/+_drxvcsKyypkMmQ1">Telegram</Link></p>
                         <BDButton buttonType={ButtonType.SecondaryGradient}><>Coming soon</></BDButton>
 
@@ -44,7 +44,7 @@ const Navbar: React.FC  = () => {
                  <div className='flex justify-between items-center'>
                     <div className='text-black font-semibold'>
                         <span className='ml-6 '>About Us</span>
-                        <span className='ml-6'>Whitepaper</span>
+                        <span className='ml-6'><Link href="https://nonstop-heart-099.notion.site/BuidlDAO-af37e2689cd347cb9be4c2343d156493">Whitepaper</Link></span>
                         <span className='ml-6'><Link href="https://t.me/+_drxvcsKyypkMmQ1">Telegram</Link></span>
                     </div>
                 </div>
