@@ -7,10 +7,16 @@ import { getDataFromIPFS } from './utils';
 
 const ProjectList = () => {
     const ctx = useContext(AppContext);
+    const [projects, setProjects] = useState<ProjectView[]>([]);
+    useEffect(() => {
+      getProjectsAndSetup()
+  },[])
+
+  
     if(ctx ==null) {
         return null;
     }
-    const [projects, setProjects] = useState<ProjectView[]>([]);
+    
 
 
     const {getProjects, getProjectUpvotes, verify} = ctx;
@@ -40,9 +46,7 @@ const ProjectList = () => {
      
        setProjects(p)
     }
-    useEffect(() => {
-        getProjectsAndSetup()
-    },[])
+
   
   return (
     <div>

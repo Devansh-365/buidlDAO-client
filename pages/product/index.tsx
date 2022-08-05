@@ -7,18 +7,18 @@ import { ProjectData } from '../../interface'
 
 const ProductPage = () => {
     const ctx = useContext(AppContext);
-    if(ctx == null) return null;
     const [l, setL] = useState(false);
     const [cover, setCover] = useState<UploadFile | null>(null);
     const [images, setImages] = useState<UploadFile[]>([]);
+  
+    if(ctx == null) return null;
+
     const {upload, loading} = ctx;
     const timeout = (ms: number) => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    useEffect(() => {
-        setL(loading);
-    }, [loading])
+   
 
     const coverPhotoProps: UploadProps = {
         onRemove: (file: any) => {
@@ -56,7 +56,7 @@ const ProductPage = () => {
         return coverResp.url;
     }
 
-    const formSubmitHandler = async (v) => {
+    const formSubmitHandler = async (v: any) => {
         const data: ProjectData ={images:[], description: v.description, cover:''}
         setL(true)
         data.cover = await uploadToIPFS(cover)
