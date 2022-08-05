@@ -1,8 +1,11 @@
 import React from 'react'
+import AppPageLayout from '../../components/templates/AppPageLayout/AppPageLayout'
 
 const Product = () => {
   return (
-    <div>Product</div>
+    <AppPageLayout>
+      <div>Product</div>
+    </AppPageLayout>
   )
 }
 

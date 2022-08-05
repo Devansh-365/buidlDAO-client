@@ -1,0 +1,9 @@
+.dashboard {
+    @apply h-screen w-screen grid;
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+
+}
+
+.mainContent {
+    grid-column: 2 / span 19;
+}

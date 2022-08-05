@@ -12,13 +12,14 @@ export const config = {
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     if(_req.method == "POST") {
-        if(!_req.body.title || !_req.body.data ) {
-            return res.status(400).json({message:"Missing content"});
-        }
+        // if(!_req.body.description || !_req.body.cover  ) {
+        //     return res.status(400).json({message:"Missing content"});
+        // }
 
 
 
         try {
+            const {images, name, description, cover} = JSON.parse(_req.body)
             const response = await fetch("https://deep-index.moralis.io/api/v2/ipfs/uploadFolder", {
             method:"POST",
             headers: {
@@ -27,8 +28,8 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify([{
-                "path": "buidldao/"+ _req.body.name + ".json",
-                "content":btoa(JSON.stringify({title: _req.body.title, ..._req.body.data}))
+                "path": "buidldao/"+ name + ".json",
+                "content":Buffer.from(JSON.stringify({title: name,images, description, cover})).toString("base64")
             }])
             
             })

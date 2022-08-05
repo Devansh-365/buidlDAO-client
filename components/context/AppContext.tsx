@@ -2,6 +2,7 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 import {ethers} from 'ethers';
 import BuidlDAO from '../../abi/BuidlDAO.json'
+import { Project } from "../../interface";
 declare global {
     interface Window { ethereum: any }
   }
@@ -13,10 +14,11 @@ export interface IAppContext {
   getNetworkId: () => any,
   upload: (title: string, data: string) => Promise<void>,
   upvote: (id: number) => Promise<void>,
-  getProjects: () => Promise<any>,
+  getProjects: () => Promise<Project[]>,
   getProject: (id: number) => Promise<any>,
-  getProjectUpvotes: (id: number) => Promise<any>,
-  loading: boolean
+  getProjectUpvotes: (id: number) => Promise<string[]>,
+  loading: boolean,
+  verify: (id: number) => Promise<any>
 
 }
 
@@ -26,7 +28,7 @@ export const AppContext = createContext<IAppContext | null>(null);
 const AppProvider = ({children} : PropsWithChildren) => {
   const [connectedUser, setConnectedUser] = useState("");
   const [loading, setLoading] = useState(false);
-  const contractAddress = "0x1d9Cf9104244B3Bf8864d10205A878263C9DC890";
+  const contractAddress = "0x95A5b67Eb8d0c2cb222EF25593582e8dBc46d2e7";
 
   const connectWallet = async () => {
       try {
@@ -74,14 +76,14 @@ const AppProvider = ({children} : PropsWithChildren) => {
       if(!ethereum) {
         throw new Error("Metamask not installed");
       }
+      console.log(title,data )
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-         
       const connectedContract = new ethers.Contract(contractAddress, BuidlDAO.abi, signer);
       await connectedContract.upload(title, data);
        
     }catch(err) {
-
+      console.error(err)
     }finally {
       setLoading(false);
     }
@@ -168,6 +170,23 @@ const AppProvider = ({children} : PropsWithChildren) => {
       setLoading(false);
     }
   }
+
+
+  const verify = async (id: number) => {
+    try {
+      const {ethereum} = window;
+      if(!ethereum) {
+        throw new Error("Metamask not installed");
+      }
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+         
+      const connectedContract = new ethers.Contract(contractAddress, BuidlDAO.abi, signer);
+      return (await connectedContract.verify(id)); 
+    }catch(err) {
+
+    }
+  }
   return (<AppContext.Provider
     value={{
       connectedUser,
@@ -179,7 +198,8 @@ const AppProvider = ({children} : PropsWithChildren) => {
       upload,
       upvote,
       getNetworkId,
-      getProjects
+      getProjects,
+      verify
     }}>
       <>{children}</>
       </AppContext.Provider>)

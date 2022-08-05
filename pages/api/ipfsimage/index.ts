@@ -18,9 +18,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
         const form = new formidable.IncomingForm();
         form.parse(_req, async function (err, fields, files) {
             const file = files.file as formidable.File
-            console.log(files)
             const data = fs.readFileSync(file.filepath);
             try {
+                
                 const resFile = await axios({
                     method: "post",
                     url: "https://deep-index.moralis.io/api/v2/ipfs/uploadFolder",

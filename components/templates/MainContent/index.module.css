@@ -1,0 +1,4 @@
+.mainContent_hero {
+    @apply grid grid-cols-10 p-6 py-10 text-white font-semibold rounded-xl;
+    background: -webkit-linear-gradient(0deg , #5429FF, #73CDFF);
+}

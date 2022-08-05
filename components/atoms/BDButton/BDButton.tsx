@@ -8,7 +8,7 @@ export enum ButtonType {
 }
 
 export type IBDButton = {
-  buttonType: ButtonType
+  buttonType?: ButtonType
 } &  ButtonProps
 const BDButton:React.FC<PropsWithChildren<IBDButton>> = ({buttonType, children,...rest}: PropsWithChildren<IBDButton>) => {
 
