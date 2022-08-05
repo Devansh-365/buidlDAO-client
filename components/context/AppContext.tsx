@@ -37,7 +37,8 @@ const AppProvider = ({children} : PropsWithChildren) => {
         if(!ethereum ) {
           throw new Error("Metamask not installed");
         }
-        const accounts = await ethereum.request({method: "eth_accounts"});
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
         if(accounts.length!== 0) {
           const account = accounts[0];
           setConnectedUser(account)
